@@ -16,10 +16,9 @@
 
   <build_depend>libqt_dev</build_depend>
   <build_depend>libqt_opengl_dev</build_depend>
-  <build_depend>message_generation</build_depend>
 
   <build_export_depend>message_runtime</build_export_depend>
-
+  <depend>message_generation</depend>
   <depend>actionlib</depend>
   <depend>cv_bridge</depend>
   <depend>gps_common</depend>

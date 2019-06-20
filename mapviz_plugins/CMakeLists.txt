@@ -25,6 +25,7 @@ set(DEPENDENCIES
   swri_yaml_util
   tf 
   visualization_msgs
+  message_generation
 )
 
 find_package(catkin REQUIRED COMPONENTS ${DEPENDENCIES})
@@ -101,7 +102,7 @@ catkin_package(
   INCLUDE_DIRS include
   LIBRARIES ${PROJECT_NAME}
   DEPENDS Qt
-  CATKIN_DEPENDS ${DEPENDENCIES}
+  CATKIN_DEPENDS ${DEPENDENCIES} message_runtime
 )
 
 # Fix conflict between Boost signals used by tf and QT signals used by mapviz
@@ -226,6 +227,8 @@ target_link_libraries(${PROJECT_NAME}
 set_target_properties(${PROJECT_NAME} PROPERTIES
   COMPILE_FLAGS "-std=c++11 -D__STDC_FORMAT_MACROS"
 )
+
+add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS})
 
 ### Install the plugins ###
 install(DIRECTORY include/${PROJECT_NAME}/
